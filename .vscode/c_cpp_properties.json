@@ -18,6 +18,8 @@
                 "/home/swook/arduino-1.8.13/hardware/arduino/avr/cores/arduino",
                 "/home/swook/arduino-1.8.13/hardware/arduino/avr/variants/mega",
                 "/home/swook/Arduino/libraries/DHT_sensor_library",
+                "/home/swook/Arduino/libraries/LiquidCrystal_I2C",
+                "/home/swook/arduino-1.8.13/hardware/arduino/avr/libraries/Wire/src",
                 "/home/swook/Arduino/libraries/Adafruit_Unified_Sensor",
                 "/home/swook/arduino-1.8.13/hardware/tools/avr/lib/gcc/avr/7.3.0/include",
                 "/home/swook/arduino-1.8.13/hardware/tools/avr/lib/gcc/avr/7.3.0/include-fixed",
@@ -531,7 +533,8 @@
                 "__ATOMIC_ACQ_REL=4",
                 "__ATOMIC_RELEASE=3",
                 "__BUILTIN_AVR_FMUL=1",
-                "USBCON"
+                "USBCON",
+                "__AVR_ATmega2560__"
             ]
         }
     ]
