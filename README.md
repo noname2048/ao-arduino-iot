@@ -19,4 +19,13 @@
 - vscode로 코딩하지만, upload와 시리얼모니터는 IDE를 사용합니다. (동시에 켜놓고 사용)
 - vscode 설정시, 아두이노 lib를 설치하고, includePath와 define을 유의하세요
 - vscdoe 에서 업로드와 verify등을 진행하면, c_cpp설정관련 json이 초기화되어 이러한 방법을 사용합니다.
-- 
+
+
+#### AT 명령어 순서
+
+- AT
+- AT+CWMODE=1
+- AT+CWJAP?
+- AT+CWJAP=
+- AT+CIFSR
+- AT+CIPSTART="UDP"
