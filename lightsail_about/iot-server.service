@@ -1,0 +1,11 @@
+[Unit]
+Description=Systemd Python Udp Server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /project/iot-server.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
