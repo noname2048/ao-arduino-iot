@@ -1,19 +1,20 @@
 import socket
+import re
+import pathlib
+import sys
 from datetime import datetime, timedelta, timezone
 from typing import List
 
-from sqlalchemy.orm import Session
+print(pathlib.Path(__file__).parent.parent / "remote_db")
+sys.path.append(pathlib.Path(__file__).parent.parent / "remote_db")
+print(sys.path)
+from remote_db.models import SensorValue
+from remote_db import Base, SessionLocal
 
-import sys
-sys.path.append("../sql_about")
-from ale.models import Base, SensorValue
-from ale.database import SessionLocal, engine
 
-import re
-
-comp = re.compile(r"T(?P<TEMP>[-0-9]+.\d+),H(?P<HUMID>[-0-9]+.\d+)")
+data_comp = re.compile(r"T(?P<TEMP>[-0-9]+.\d+),H(?P<HUMID>[-0-9]+.\d+)")
 def str2info(s: str) -> List[float]:
-    result = comp.search(s)
+    result = data_comp.search(s)
     if result != None:
         result_dict = result.groupdict()
         temp = float(result_dict.get("TEMP"))
@@ -22,8 +23,9 @@ def str2info(s: str) -> List[float]:
     else:
         return None, None
     
-
-host: str = "192.168.35.2"
+t = socket.gethostbyname(socket.gethostname())
+host: str = t
+# host: str = "192.168.35.2"
 port: int = 8050
 
 def now(format: str = "%H:%M:%S") -> str:
