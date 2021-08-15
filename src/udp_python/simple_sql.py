@@ -2,12 +2,11 @@ import socket
 import re
 import pathlib
 import sys
+import os
 from datetime import datetime, timedelta, timezone
 from typing import List
 
-print(pathlib.Path(__file__).parent.parent / "remote_db")
-sys.path.append(pathlib.Path(__file__).parent.parent / "remote_db")
-print(sys.path)
+sys.path.append("..")
 from remote_db.models import SensorValue
 from remote_db import Base, SessionLocal
 
