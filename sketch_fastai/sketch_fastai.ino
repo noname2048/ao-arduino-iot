@@ -17,7 +17,7 @@ void setup() {
 void loop() {
   progress += 1;
   
-  delay(3000);
+  delay(15000);
   sensorRead();
   lcdPrint(0, getSensorDataStr());
 

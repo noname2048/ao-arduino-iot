@@ -1,3 +1,4 @@
+#pragma once
 #include <stdlib.h>
 #include <Arduino.h>
 #include <DHT.h>
