@@ -19,7 +19,7 @@ class Device(Base):
         nullable=False,
     )
 
-    sensorvalue_set = relationship("SensorValue", back_populates="device")
+    sensorvalue_set = relationship("SensorValue", back_populates="device", lazy="dynamic")
 
 
 class SensorValue(Base):
