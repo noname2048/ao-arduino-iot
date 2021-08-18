@@ -22,7 +22,8 @@ def str2info(s: str) -> List[float]:
     else:
         return None, None
 
-host: str = "iot.noname2048.com"
+t = socket.gethostbyname(socket.gethostname())
+host: str = t
 port: int = 8050
 
 def now(format: str = "%H:%M:%S") -> str:
