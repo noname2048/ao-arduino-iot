@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import desc
 from . import models, schemas
 
 
@@ -23,7 +24,18 @@ def list_device_sensorvalue(db: Session, pincode: int, skip: int = 0, limit: int
     return (
         db.query(models.SensorValue)
         .filter(models.SensorValue.device == db_device)
+        .order_by(models.SensorValue.time.desc())
         .offset(skip)
         .limit(limit)
         .all()
+    )
+
+
+def last_device_sensorvalue(db: Session, pincode: int):
+    db_device = db.query(models.Device).filter(models.Device.pincode == pincode).first()
+    return (
+        db.query(models.SensorValue)
+        .filter(models.SensorValue.device == db_device)
+        .order_by(models.SensorValue.time.desc())
+        .first()
     )

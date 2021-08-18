@@ -1,7 +1,10 @@
 from typing import List, Optional, Any
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 from datetime import datetime
+import datetime as D
+
+KST = D.timezone(D.timedelta(hours=9))
 
 
 class SensorValueBase(BaseModel):
@@ -26,8 +29,8 @@ class DeviceBase(BaseModel):
     modelname: str = "arduino mega"
     pincode: int = 2
 
-    created_at: datetime = datetime.now()
-    updated_at: datetime = datetime.now()
+    created_at: datetime = datetime.now(tz=KST)
+    updated_at: datetime = datetime.now(tz=KST)
 
 
 class DeviceCreate(DeviceBase):
